@@ -1,0 +1,22 @@
+{
+  "name": "coffindance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html -d build --public-url /coffindance/ && gh-pages -d build"
+  },
+  "keywords": [],
+  "author": "ManzDev",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.2.0",
+    "stylelint": "^13.3.3",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "dependencies": {
+    "howler": "^2.1.3"
+  }
+}
