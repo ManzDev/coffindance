@@ -52,6 +52,19 @@ body {
   animation: dance 1.05s steps(4) infinite;
 }
 
+button.start::after {
+  content: attr(title);
+  position: absolute;
+  color: darkred;
+  display: block;
+  font-size: 18px;
+  transform: translate(-90px,45px);
+}
+
+button.start:hover::after {
+  color: red;
+}
+
 .pallbearer.still { animation: none }
 .pallbearer.veryfast {
   animation-duration: 0.5s;
