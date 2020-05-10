@@ -73,10 +73,6 @@ const creditsLink = document.querySelector(".credits p");
 const song = new Song();
 const changeBackgroundImage = (image) => (room.style.backgroundImage = `url(${images[image]})`);
 
-document.onkeydown = (ev) => {
-  if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") song.interference();
-};
-
 pallbearer.style.backgroundImage = `url(${pallbearerImage})`;
 
 changeBackgroundImage("original");
@@ -89,4 +85,7 @@ startButton.onclick = () => {
   startButton.remove();
   changeCredits(0);
   song.play();
+  document.onkeydown = (ev) => {
+    if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") song.interference();
+  };
 };
