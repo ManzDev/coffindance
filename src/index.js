@@ -3,10 +3,19 @@ import mp3 from "./assets/astronomia-*.mp3";
 import images from "./assets/bg-*.gif";
 import sfx from "./assets/sfx.mp3";
 import noise from "./assets/noise.gif";
+import pallbearerImage from "./assets/pallbearer.png";
 import authors from "./assets/authors.json";
 
 const names = ["original", "medieval", "metal", "sad", "synthwave", "cumbia"];
 const classes = ["", "", "veryfast", "still", "fast", "slow"];
+
+const preloadImage = (image) => {
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.href = image;
+  link.as = "image";
+  document.head.appendChild(link);
+};
 
 class Song {
   constructor() {
@@ -14,7 +23,12 @@ class Song {
 
     this.songs = {};
     this.sfx = new Howl({ src: [sfx], volume: 4, onend: () => this.change() });
-    names.forEach((name) => (this.songs[name] = new Howl({ src: [mp3[name]], loop: true })));
+    names.forEach((name) => {
+      this.songs[name] = new Howl({ src: [mp3[name]], loop: true });
+      preloadImage(images[name]);
+    });
+    preloadImage(noise);
+    preloadImage(pallbearerImage);
   }
 
   play() {
@@ -62,6 +76,8 @@ const changeBackgroundImage = (image) => (room.style.backgroundImage = `url(${im
 document.onkeydown = (ev) => {
   if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") song.interference();
 };
+
+pallbearer.style.backgroundImage = `url(${pallbearerImage})`;
 
 changeBackgroundImage("original");
 

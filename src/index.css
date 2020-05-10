@@ -49,7 +49,6 @@ body {
   width: 576px;
   height: 336px;
   transform: translate(var(--x), var(--y));
-  background: url(assets/pallbearer.png);
   animation: dance 1.05s steps(4) infinite;
 }
 
